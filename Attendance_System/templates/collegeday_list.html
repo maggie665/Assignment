@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>COLLEGE DAY LIST</h1>
+
+<a href="/collegeday/add/">Add</a>
+<table border="1">
+    <thead>
+       <tr>
+           <th>CollegeDayid</th>
+           <th>Date</th>
+           <th>Class</th>
+       </tr>
+    </thead>
+    <tbody>
+    {% for obj in collegedata %}
+        <tr>
+            <td>{{ obj.CollegeDay_id }}</td>
+            <td>{{ obj.date }}</td>
+            <td>{{ obj.Class.Course.name }}</td>
+            <td>
+                <a class="btn btn-primary btn-xs"  href="/collegeday/{{ obj.id }}/edit/">edit</a>
+                <a class="btn btn-danger btn-xs" href="/collegeday/delete/?nid={{ obj.id }}">delete</a>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+
+</table>
+
+{% endblock %}

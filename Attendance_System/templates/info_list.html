@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>INFOLIST</h1>
+
+<a href="/info/add/">Add</a>
+<table border="1">
+    <thead>
+       <tr>
+           <th>id</th>
+           <th>username</th>
+           <th>email</th>
+           <th>password</th>
+       </tr>
+    </thead>
+    <tbody>
+    {% for obj in data_list %}
+        <tr>
+            <td>{{ obj.id }}</td>
+            <td>{{ obj.username }}</td>
+            <td>{{ obj.email }}</td>
+            <td>{{ obj.password }}</td>
+            <td>
+                <a href="/info/delete/?nid={{ obj.id }}">Delete</a>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+
+</table>
+
+{% endblock %}

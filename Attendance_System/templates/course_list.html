@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block content %}
+        <div style="margin-bottom: 10px">
+            <a class="btn btn-success" href="/course/add/">
+          <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+                Create Course
+            </a>
+        </div>
+
+        <div class="bs-example" data-example-id="panel-without-body-with-table">
+    <div class="panel panel-default">
+      <!-- Default panel contents -->
+      <div class="panel-heading">
+          <span class="glyphicon glyphicon-th" aria-hidden="true"></span>
+          Class List
+      </div>
+
+      <!-- Table -->
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Course Name</th>
+              <th>semester</th>
+            <th>Edit</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for obj in queryset %}
+          <tr>
+            <th>{{ obj.id }}</th>
+            <td>{{ obj.name }}</td>
+            <td>{{ obj.semester.year }},{{ obj.semester.semester }}</td>
+            <td>
+                <a class="btn btn-primary btn-xs"  href="/course/{{ obj.id }}/edit/">edit</a>
+                <a class="btn btn-danger btn-xs" href="/course/delete/?nid={{ obj.id }}">delete</a>
+            </td>
+        {% endfor %}
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+{% endblock %}

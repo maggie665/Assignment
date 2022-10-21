@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}
+    Send email
+{% endblock %}
+{% block content %}
+    <form action="/send_email/" method="post">
+    {% csrf_token %}
+    <p>Subject: <input type="text" name="subject"></p>
+    <p>Body: <textarea cols="50" rows="10" name="body"></textarea></p>
+    <p><select name="user">
+        {% for user in users %}
+            <option value="{{ user.id }}">{{ user.first_name }} {{ user.last_name }}</option>
+        {% endfor %}
+    </select></p>
+    <button>Send</button>
+    {{ message }}
+    </form>
+{% endblock %}

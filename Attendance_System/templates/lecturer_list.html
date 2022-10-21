@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block content %}
+        <div style="margin-bottom: 10px">
+            <a class="btn btn-success" href="/lecturer/add/">
+          <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+                Create lecturer
+            </a>
+        </div>
+
+        <div class="bs-example" data-example-id="panel-without-body-with-table">
+    <div class="panel panel-default">
+      <!-- Default panel contents -->
+      <div class="panel-heading">
+          <span class="glyphicon glyphicon-th" aria-hidden="true"></span>
+          lecturer List
+      </div>
+
+      <!-- Table -->
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>staff_id</th>
+            <th>staff_name</th>
+            <th>DOB</th>
+            <th>operation</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for obj in row_object %}
+          <tr>
+            <th>{{ obj.id }}</th>
+            <td>{{ obj.staff_id }}</td>
+            <td>{{ obj.user.username }}</td>
+            <td>{{ obj.DOB }}</td>
+            <td>
+                <a class="btn btn-primary btn-xs"  href="/lecturer/{{ obj.id }}/edit/">edit</a>
+                <a class="btn btn-danger btn-xs" href="/lecturer/delete/?nid={{ obj.id }}">delete</a>
+            </td>
+        {% endfor %}
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+{% endblock %}

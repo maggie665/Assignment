@@ -1,0 +1,79 @@
+{% extends 'base2.html' %}
+
+{% block content %}
+        <div style="margin-bottom: 10px">
+
+          <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+                List Course
+            </a>
+        </div>
+
+        <div class="bs-example" data-example-id="panel-without-body-with-table">
+    <div class="panel panel-default">
+      <!-- Default panel contents -->
+      <div class="panel-heading">
+          <span class="glyphicon glyphicon-th" aria-hidden="true"></span>
+          Class List
+      </div>
+
+      <!-- Table -->
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Course Name</th>
+              <th>semester</th>
+              <th>students</th>
+            <th>Attendance</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for obj in info_list %}
+          <tr>
+            <th>{{ forloop.counter }}</th>
+            <td>{{ obj.course }}</td>
+            <td>{{ obj.semester }}</td>
+            <td>{{ obj.student_name }}</td>
+            <td>{% if obj.attendace == 1 %}checked in{% else %}absent{% endif %}</td>
+
+
+        {% endfor %}
+          </tr>
+        </tbody>
+      </table>
+
+     <div class="panel-heading">
+          <span class="glyphicon glyphicon-th" aria-hidden="true"></span>
+          Student attendance list
+      </div>
+     <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Course Name</th>
+            <th>student name</th>
+            <th>attendance rate</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for obj in check_info %}
+          <tr>
+            <th>{{ forloop.counter }}</th>
+            <td>{{ obj.course_name }}</td>
+            <td>{{ obj.studentname }}</td>
+            <td>{{ obj.radio }}</td>
+          </tr>
+        {% endfor %}
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+{% endblock %}

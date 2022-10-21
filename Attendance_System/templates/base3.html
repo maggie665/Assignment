@@ -1,0 +1,66 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'plugins/bootstrap-3.4.1/css/bootstrap.min.css' %}">
+    <style>
+        .navbar{
+            border-radius: 0;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-default">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+              data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+
+      </button>
+      <a class="navbar-brand" href="#">Student Attendance System<span class="sr-only">(current)</span></a>
+    </div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a href="#">courses</a></li>
+
+          </ul>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>{% if username %}<a href="#">{{ username }}</a>{% else %} <a href="/accounts/login/">Login</a>{% endif %}</li>
+        <li><a href="/logout/">Logout</a></li>
+
+         {% if username %}
+
+      {% else %}
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+             aria-expanded="false">Register <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="{% url 'register' %}">Register</a></li>
+            <li><a href="#">About me</a></li>
+{#            <li role="separator" class="divider"></li>#}
+{#            <li><a href="#">Logout</a></li>#}
+          </ul>
+        </li>
+      {% endif %}
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div style="width:75%;margin:0 auto;">
+        {% block content %}
+
+        {% endblock %}
+</div>
+
+
+
+<script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
+<script src="{% static 'plugins/bootstrap-3.4.1/js/bootstrap.min.js' %}"></script>
+</body>
+</html>

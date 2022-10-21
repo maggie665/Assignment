@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}
+Custom Registration
+{% endblock %}
+
+{% block content %}
+<h1>Custom Registration</h1>
+
+    <form method="post" action="{% url "custom_register" %}">
+    {% csrf_token %}
+    <p>username: <input type="text" name="username"></p>
+    <p>firstname: <input type="text" name="firstname"></p>
+    <p>lastname: <input type="text" name="lastname"></p>
+    <p>email: <input type="email" name="email"></p>
+    <p>password: <input type="password" name="password1"></p>
+    <p>password Confirmation: <input type="password" name="password2"></p>
+    <p>bio: <textarea rows="10" cols="50" name="bio"></textarea></p>
+    <p>website: <input type="text" name="website"></p>
+    <button>Sign Up</button>
+    </form>
+
+
+{% endblock %}

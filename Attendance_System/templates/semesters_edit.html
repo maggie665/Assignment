@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+         <div class="panel panel-defaule">
+              <h3 class="panel-title"> Edit semesters </h3>
+         </div>
+         <div class="panel-body">
+             <form action="/semesters/{{ row_object.id }}/edit/" method="post">
+
+         <div class="form-group">
+             <label> year</label>
+             <input type="text" required="required" class="form-control" placeholder="Course" name="year" value="{{ row_object.year }}"/>
+         </div>
+        <div class="form-group">
+             <label> semester</label>
+             <input type="text" required="required" class="form-control" placeholder="Course" name="semester" value="{{ row_object.semester }}"/>
+         </div>
+          <div class="form-group">
+              <div class="col-sm-offset-2 col-sm-10">
+                  <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+         </div>
+
+     </form>
+  </div>
+
+
+{% endblock %}

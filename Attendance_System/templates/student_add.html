@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+      <div class="panel panel-defaule">
+          <h3 class="panel-title"> Create Student </h3>
+      </div>
+
+       <div class="panel-body">
+          <form method="post">
+                {% csrf_token %}
+       </div>
+    <form action="/student/add/" method="post">
+
+         <div class="form-group">
+             <label> student</label>
+             <input type="text" required="required" class="form-control" placeholder="student id" name="student_id"/>
+         </div>
+        <div class="form-group">
+             <label> student name</label>
+             <input type="text" required="required" class="form-control" placeholder="student name" name="username"/>
+         </div>
+          <div class="form-group">
+              <div class="col-sm-offset-2 col-sm-10">
+                  <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+         </div>
+
+     </form>
+  </div>
+
+
+
+
+
+{% endblock %}

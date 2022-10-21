@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block title %}
+    {{ post.title_tag }}
+{% endblock %}
+
+{% block content %}
+    <h1>{{ student.name }}</h1>
+
+    <form action="{% url 'like_post' %}" method="post">
+        {% csrf_token %}
+        <input type="hidden" value="{{ post.id }}" name="post_id">
+        {% if user.is_authenticated %}
+            {% if user in post.likes.all %}
+                <button>
+                    Dislike
+                </button>
+            {% else %}
+                <button>
+                    Like
+                </button>
+            {% endif %}
+        {% endif %}
+    </form>
+
+
+    Who likes this post:
+    <ul>
+        {% for person in post.likes.all %}
+            <li>{{ person.first_name }} {{ person.last_name }}</li>
+        {% endfor %}
+    </ul>
+    <p>Number of Likes: {{ post.likes.count }}</p>
+
+    <form method="post" action="{% url 'add_comment' %}">
+        <h2>Add Comment</h2>
+        {% csrf_token %}
+        <input type="hidden" value="{{ post.id }}" name="post_id">
+        <input type="hidden" value="{{ user.id }}" name="user_id">
+        <textarea cols="50" rows="5" name="body"></textarea>
+        <button>Add</button>
+    </form>
+
+    <ul>
+        {% for comment in post.comment_set.all %}
+            <li>{{ comment.body }}--
+                {{ comment.user.first_name }} {{ comment.user.last_name }}
+                {{ comment.date_added }}
+
+            </li>
+        {% endfor %}
+    </ul>
+
+    <div class="card" style="width: 18rem">
+        <div class="card-body">
+            <h5 class="card-title">Author: {{ post.author.last_name }} {{ post.author.first_name }}</h5>
+            <p class="card-text">{{ post.author.profile.bio }}</p>
+            <a href="#" class="btn btn-primary">{{ post.author.profile.website }}</a>
+        </div>
+    </div>
+{% endblock %}

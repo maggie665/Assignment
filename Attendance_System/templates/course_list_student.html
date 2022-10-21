@@ -1,0 +1,88 @@
+{% extends 'base3.html' %}
+
+{% block content %}
+        <div style="margin-bottom: 10px">
+
+          <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+                need to sign in
+            </a>
+        </div>
+
+        <div class="bs-example" data-example-id="panel-without-body-with-table">
+    <div class="panel panel-default">
+      <!-- Default panel contents -->
+      <div class="panel-heading">
+          <span class="glyphicon glyphicon-th" aria-hidden="true"></span>
+          Class List
+      </div>
+
+      <!-- Table -->
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Course Name</th>
+              <th>lecturer name</th>
+            <th>Check in</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for obj in info_list %}
+          <tr>
+            <th>{{ forloop.counter }}</th>
+            <td>{{ obj.coursename }}</td>
+            <td>{{ obj.teachername }}</td>
+
+            <td>
+                <form method="post" action="/sign_student/">
+                    <input type="hidden" name="attid" value="{{ obj.att_id }}">
+                    <button type="submit">check</button>
+                </form>
+            </td>
+        {% endfor %}
+          </tr>
+        </tbody>
+      </table>
+
+
+     <div class="panel-heading">
+          <span class="glyphicon glyphicon-th" aria-hidden="true"></span>
+          Checked in
+      </div>
+
+      <!-- Table -->
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Course Name</th>
+            <th>Lecturer Name</th>
+
+            <th>Checked in</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for obj in check_infos %}
+          <tr>
+            <th>{{ forloop.counter }}</th>
+            <td>{{ obj.coursename }}</td>
+            <td>{{ obj.teachername }}</td>
+
+            <td>yes</td>
+
+
+        {% endfor %}
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+{% endblock %}
